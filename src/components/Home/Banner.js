@@ -1,3 +1,5 @@
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import banner from "../../images/banner.jpg";
 const Banner = () => {
@@ -14,7 +16,13 @@ const Banner = () => {
             Every computer parts you want to get is availabe to solver.We solve
             all your need at reasonable price!
           </p>
-          <button class="btn  bg-blue-700">Get Started</button>
+          <button class="btn  bg-blue-700">
+            Get Started{" "}
+            <FontAwesomeIcon
+              className="ml-2"
+              icon={faArrowRight}
+            ></FontAwesomeIcon>{" "}
+          </button>
         </div>
         <img
           src={banner}
