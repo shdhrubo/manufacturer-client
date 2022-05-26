@@ -55,9 +55,6 @@ const Login = () => {
           <h2 className="text-center text-2xl font-bold">Login</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control w-full max-w-xs">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
               <input
                 type="email"
                 placeholder="Your Email"
@@ -121,14 +118,14 @@ const Login = () => {
 
             {signInError}
             <input
-              className="btn w-full max-w-xs text-white"
+              className="btn w-full max-w-xs text-white btn-primary"
               type="submit"
               value="Login"
             />
           </form>
           <p>
             <small>
-              New to Doctors Portal{" "}
+              New to Solver?{" "}
               <Link className="text-primary" to="/signup">
                 Create New Account
               </Link>

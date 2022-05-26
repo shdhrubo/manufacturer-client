@@ -1,0 +1,29 @@
+[
+  {
+    
+    "name": "CPU",
+    "description": "This is a CPU",
+    "img": "https://i.ibb.co/mqR5SXK/cpu.jpg",
+    "minimum": 50,
+    "available": 200,
+    "price": 300
+  },
+  {
+    
+    "name": "Ram",
+    "description": "This is a Ram",
+    "img": "https://i.ibb.co/12GMQT2/ram.jpg",
+    "minimum": 50,
+    "available": 200,
+    "price": 300
+  },
+  {
+    
+    "name": "Webcam",
+    "description": "This is a Webcam",
+    "img": "https://i.ibb.co/NFw1SMD/webcam.jpg",
+    "minimum": 50,
+    "available": 200,
+    "price": 300
+  }
+]
