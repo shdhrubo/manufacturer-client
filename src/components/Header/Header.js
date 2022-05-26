@@ -1,3 +1,5 @@
+import { faSignOut } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { signOut } from "firebase/auth";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -23,7 +25,17 @@ const Header = () => {
         <Link to={"/contact"}>Contact Us</Link>
       </li>
       <li>
-        {user ? <button className="btn btn-ghost" onClick={logout}>Signout</button> : <Link to={"/login"}>Login</Link>}
+        {user ? (
+          <>
+            <Link to={"/dashboard"}>Dashboard</Link>
+            <p className="text-blue-700">{user?.displayName} </p>
+            <button className="btn btn-ghost" onClick={logout}>
+              Signout <FontAwesomeIcon icon={faSignOut}></FontAwesomeIcon>{" "}
+            </button>
+          </>
+        ) : (
+          <Link to={"/login"}>Login</Link>
+        )}
       </li>
     </>
   );
@@ -63,6 +75,28 @@ const Header = () => {
       </div>
       <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal p-0 font-bold">{menuItems}</ul>
+      </div>
+      <div className="navbar-end">
+        <label
+          tabIndex="1"
+          for="dashboard-sidebar"
+          className="btn btn-ghost lg:hidden"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h8m-8 6h16"
+            />
+          </svg>
+        </label>
       </div>
     </div>
   );

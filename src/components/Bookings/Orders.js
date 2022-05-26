@@ -27,6 +27,7 @@ const Orders = () => {
       userName: user.displayName,
       phone: event.target.phone.value,
       address: event.target.address.value,
+      name: part.name,
       quantity: quantity,
       cost: quantity * part.price,
     };
@@ -40,6 +41,7 @@ const Orders = () => {
       .then((res) => res.json())
       .then((data) => {
         toast(`Order placed successfully!`);
+        event.target.reset();
       });
   };
   return (
