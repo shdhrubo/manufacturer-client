@@ -35,7 +35,7 @@ const AddProducts = () => {
             img: img,
           };
 
-          fetch("http://localhost:5000/services", {
+          fetch("http://localhost:5000/products", {
             method: "POST",
             headers: {
               "content-type": "application/json",

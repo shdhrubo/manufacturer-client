@@ -19,10 +19,10 @@ const Header = () => {
       </li>
 
       <li>
-        <Link to={"/about"}>About</Link>
+        <Link to={"/blog"}>Blog</Link>
       </li>
       <li>
-        <Link to={"/contact"}>Contact Us</Link>
+        <Link to={"/portfolio"}>Portfolio</Link>
       </li>
       <li>
         {user ? (
