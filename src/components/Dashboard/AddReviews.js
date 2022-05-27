@@ -13,6 +13,7 @@ const AddReviews = () => {
       userName: user.displayName,
       reviews: event.target.reviews.value,
       ratings: event.target.ratings.value,
+      photo:user.photoURL,
     };
     fetch("http://localhost:5000/reviews", {
       method: "POST",
