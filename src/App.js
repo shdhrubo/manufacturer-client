@@ -13,6 +13,8 @@ import SignUp from "./components/Login/SignUp";
 import NotFound from "./components/NotFound/NotFound";
 import Dashboard from "./components/Dashboard/Dashboard";
 import MyOrders from "./components/Dashboard/MyOrders";
+import AddReviews from "./components/Dashboard/AddReviews";
+import MyProfiile from "./components/Dashboard/MyProfiile";
 
 function App() {
   return (
@@ -41,6 +43,8 @@ function App() {
           }
         >
           <Route path="myorders" element={<MyOrders></MyOrders>}></Route>
+          <Route path="addreview" element={<AddReviews></AddReviews>}></Route>
+          <Route path="myprofile" element={<MyProfiile></MyProfiile>}></Route>
         </Route>
       </Routes>
 

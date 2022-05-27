@@ -36,7 +36,7 @@ const Orders = () => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({ order }),
+      body: JSON.stringify( order ),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -90,7 +90,7 @@ const Orders = () => {
         <input
           type="submit"
           value="Submit"
-          className="btn btn-secondary w-full max-w-xs"
+          className="btn bg-blue-700 w-full max-w-xs"
         />
       </form>
     </div>
