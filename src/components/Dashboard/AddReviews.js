@@ -13,14 +13,14 @@ const AddReviews = () => {
       userName: user.displayName,
       reviews: event.target.reviews.value,
       ratings: event.target.ratings.value,
-      photo:user.photoURL,
+      photo: user.photoURL,
     };
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://mysterious-bastion-07906.herokuapp.com/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify( postReviews ),
+      body: JSON.stringify(postReviews),
     })
       .then((res) => res.json())
       .then((data) => {

@@ -16,12 +16,15 @@ const MyOrders = () => {
     isLoading,
     refetch,
   } = useQuery("services", () =>
-    fetch(`http://localhost:5000/order/${user.email}`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => res.json())
+    fetch(
+      `https://mysterious-bastion-07906.herokuapp.com/order/${user.email}`,
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    ).then((res) => res.json())
   );
   if (isLoading) {
     return <Loading></Loading>;
@@ -47,7 +50,6 @@ const MyOrders = () => {
                 a={a}
                 index={index}
                 key={a._id}
-               
                 setDeletingOrder={setDeletingOrder}
               ></MyOrderRow>
             ))}
@@ -56,12 +58,11 @@ const MyOrders = () => {
       </div>
       {deletingOrder && (
         <DeletingOrdersModal
-        refetch={refetch}
+          refetch={refetch}
           deletingOrder={deletingOrder}
           setDeletingOrder={setDeletingOrder}
         ></DeletingOrdersModal>
-        )}
-       
+      )}
     </div>
   );
 };

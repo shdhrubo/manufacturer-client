@@ -13,13 +13,16 @@ const CheckoutForm = ({ order }) => {
   const { _id, name, user, userName, cost } = order;
 
   useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ cost }),
-    })
+    fetch(
+      "https://mysterious-bastion-07906.herokuapp.com/create-payment-intent",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ cost }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data?.clientSecret) {
@@ -75,11 +78,10 @@ const CheckoutForm = ({ order }) => {
         appointment: _id,
         transactionId: paymentIntent.id,
       };
-      fetch(`http://localhost:5000/order/${_id}`, {
+      fetch(`https://mysterious-bastion-07906.herokuapp.com/order/${_id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",
-          
         },
         body: JSON.stringify(payment),
       })

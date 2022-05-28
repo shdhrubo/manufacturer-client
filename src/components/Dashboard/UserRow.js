@@ -4,9 +4,12 @@ import { toast } from "react-toastify";
 const UserRow = ({ user, i, refetch }) => {
   const { email, role } = user;
   const makeAdmin = () => {
-    fetch(`http://localhost:5000/user/admin/${email}`, {
-      method: "PUT",
-    })
+    fetch(
+      `https://mysterious-bastion-07906.herokuapp.com/user/admin/${email}`,
+      {
+        method: "PUT",
+      }
+    )
       .then((res) => {
         if (res.status === 403) {
           toast.error("Failed to Make an admin");
@@ -25,11 +28,11 @@ const UserRow = ({ user, i, refetch }) => {
       <td>{i + 1}</td>
       <td>{email}</td>
       <td>
-        {
-          role !== 'admin' && <button onClick={makeAdmin} class="btn bg-blue-700 btn-xs">
+        {role !== "admin" && (
+          <button onClick={makeAdmin} class="btn bg-blue-700 btn-xs">
             Make Admin
           </button>
-        }
+        )}
       </td>
     </tr>
   );

@@ -12,7 +12,7 @@ const ManageProducts = () => {
     isLoading,
     refetch,
   } = useQuery("services", () =>
-    fetch("http://localhost:5000/services", {
+    fetch("https://mysterious-bastion-07906.herokuapp.com/services", {
       method: "GET",
     }).then((res) => res.json())
   );

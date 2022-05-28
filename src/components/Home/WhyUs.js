@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const WhyUs = () => {
   const [why, setWhy] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/whyus")
+    fetch("https://mysterious-bastion-07906.herokuapp.com/whyus")
       .then((res) => res.json())
       .then((data) => setWhy(data));
   });

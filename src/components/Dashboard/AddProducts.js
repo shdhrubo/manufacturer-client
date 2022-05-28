@@ -35,7 +35,7 @@ const AddProducts = () => {
             img: img,
           };
 
-          fetch("http://localhost:5000/products", {
+          fetch("https://mysterious-bastion-07906.herokuapp.com/products", {
             method: "POST",
             headers: {
               "content-type": "application/json",

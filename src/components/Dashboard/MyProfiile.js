@@ -7,12 +7,15 @@ const MyProfiile = () => {
   const [user] = useAuthState(auth);
   const [appUser, setAppUser] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/user/${user?.email}`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://mysterious-bastion-07906.herokuapp.com/user/${user?.email}`,
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => setAppUser(data));
   }, [user, appUser]);
@@ -27,13 +30,16 @@ const MyProfiile = () => {
       linkedin: event.target.linkedin.value,
     };
 
-    fetch(`http://localhost:5000/user/${user?.email}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(currentUser),
-    })
+    fetch(
+      `https://mysterious-bastion-07906.herokuapp.com/user/${user?.email}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(currentUser),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         toast.success("Updated successfully!");

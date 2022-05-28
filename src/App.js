@@ -23,6 +23,7 @@ import RequireAdmin from "./components/Login/RequireAdmin";
 import Payment from "./components/Dashboard/Payment";
 import Blog from "./components/Blog/Blog";
 import Portfolio from "./components/Portfolio/Portfolio";
+import RequireUser from "./components/Login/RequireUser";
 
 function App() {
   return (
@@ -52,8 +53,22 @@ function App() {
             </RequireAuth>
           }
         >
-          <Route path="myorders" element={<MyOrders></MyOrders>}></Route>
-          <Route path="addreview" element={<AddReviews></AddReviews>}></Route>
+          <Route
+            path="myorders"
+            element={
+              <RequireUser>
+                <MyOrders></MyOrders>
+              </RequireUser>
+            }
+          ></Route>
+          <Route
+            path="addreview"
+            element={
+              <RequireUser>
+                <AddReviews></AddReviews>
+              </RequireUser>
+            }
+          ></Route>
           <Route path="myprofile" element={<MyProfiile></MyProfiile>}></Route>
           <Route path="payment/:id" element={<Payment></Payment>}></Route>
           <Route

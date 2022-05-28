@@ -8,7 +8,7 @@ const Orders = () => {
   const { id } = useParams();
   const [part, setPart] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/service/${id}` , {
+    fetch(`https://mysterious-bastion-07906.herokuapp.com/service/${id}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -35,7 +35,7 @@ const Orders = () => {
       quantity: quantity,
       cost: quantity * part.price,
     };
-    fetch("http://localhost:5000/orders", {
+    fetch("https://mysterious-bastion-07906.herokuapp.com/orders", {
       method: "POST",
       headers: {
         "content-type": "application/json",
