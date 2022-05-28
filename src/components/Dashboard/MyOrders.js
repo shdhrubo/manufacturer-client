@@ -37,7 +37,7 @@ const MyOrders = () => {
                       <button className="btn btn-xs bg-blue-700">pay</button>
                     </Link>
                   )}
-                  {a.price && a.paid && (
+                  {a.paid && (
                     <div>
                       <p>
                         <span className="text-success">Paid</span>

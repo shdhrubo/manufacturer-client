@@ -22,7 +22,6 @@ const Orders = () => {
       return toast.error("Invalid input for quantity");
     }
     const order = {
-      orderId: part._id,
       user: user.email,
       userName: user.displayName,
       phone: event.target.phone.value,
