@@ -22,6 +22,7 @@ import ManageOrders from "./components/Dashboard/ManageOrders";
 import RequireAdmin from "./components/Login/RequireAdmin";
 import Payment from "./components/Dashboard/Payment";
 import Blog from "./components/Blog/Blog";
+import Portfolio from "./components/Portfolio/Portfolio";
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/blog" element={<Blog></Blog>}></Route>
-        <Route path="/home" element={<Home></Home>}></Route>
+        <Route path="/portfolio" element={<Portfolio></Portfolio>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
