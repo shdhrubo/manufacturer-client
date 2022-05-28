@@ -10,17 +10,7 @@ import MyOrderRow from "./MyOrderRow";
 const MyOrders = () => {
   const [user] = useAuthState(auth);
   const [deletingOrder, setDeletingOrder] = useState(null);
-  // const [myOrders, setMyOrders] = useState([]);
-  // useEffect(() => {
-  //   fetch(`http://localhost:5000/order/${user.email}`, {
-  //     method: "GET",
-  //     headers: {
-  //       authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-  //     },
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => setMyOrders(data));
-  // }, []);
+
   const {
     data: myOrders,
     isLoading,
