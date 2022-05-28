@@ -1,21 +1,48 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
+import Loading from "../Loading/Loading";
+import DeletingOrdersModal from "./DeletingOrdersModal";
+import MyOrderRow from "./MyOrderRow";
 
 const MyOrders = () => {
   const [user] = useAuthState(auth);
-  const [myOrders, setMyOrders] = useState([]);
-  fetch(`http://localhost:5000/order/${user.email}`)
-    .then((res) => res.json())
-    .then((data) => setMyOrders(data));
+  const [deletingOrder, setDeletingOrder] = useState(null);
+  // const [myOrders, setMyOrders] = useState([]);
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/order/${user.email}`, {
+  //     method: "GET",
+  //     headers: {
+  //       authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => setMyOrders(data));
+  // }, []);
+  const {
+    data: myOrders,
+    isLoading,
+    refetch,
+  } = useQuery("services", () =>
+    fetch(`http://localhost:5000/order/${user.email}`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
+  );
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
   return (
     <div>
       <h4 className="text-2xl font-bold text-blue-700">
         My Orders: {myOrders.length}
       </h4>
-      <div class="overflow-x-auto">
-        <table class="table w-full">
+      <div class="overflow-x-auto ">
+        <table class="table w-full ">
           <thead>
             <tr>
               <th>Sl</th>
@@ -26,34 +53,25 @@ const MyOrders = () => {
           </thead>
           <tbody>
             {myOrders.map((a, index) => (
-              <tr key={a._id}>
-                <th>{index + 1}</th>
-                <td>{a.name}</td>
-                <td>$ {a.cost}</td>
-
-                <td>
-                  {a.cost && !a.paid && (
-                    <Link to={`/dashboard/payment/${a._id}`}>
-                      <button className="btn btn-xs bg-blue-700">pay</button>
-                    </Link>
-                  )}
-                  {a.paid && (
-                    <div>
-                      <p>
-                        <span className="text-success">Paid</span>
-                      </p>
-                      <p>
-                        Transaction id:{" "}
-                        <span className="text-success">{a.transactionId}</span>
-                      </p>
-                    </div>
-                  )}
-                </td>
-              </tr>
+              <MyOrderRow
+                a={a}
+                index={index}
+                key={a._id}
+               
+                setDeletingOrder={setDeletingOrder}
+              ></MyOrderRow>
             ))}
           </tbody>
         </table>
       </div>
+      {deletingOrder && (
+        <DeletingOrdersModal
+        refetch={refetch}
+          deletingOrder={deletingOrder}
+          setDeletingOrder={setDeletingOrder}
+        ></DeletingOrdersModal>
+        )}
+       
     </div>
   );
 };

@@ -11,6 +11,9 @@ const MakeAdmin = () => {
   } = useQuery("user", () =>
     fetch("http://localhost:5000/user", {
       method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
     }).then((res) => res.json())
   );
   if (isLoading) {

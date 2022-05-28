@@ -1,17 +1,15 @@
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../../firebase.init";
 
 const Review = ({ review }) => {
-  const { user, userName, reviews, ratings, photo } = review;
+  const { userName, reviews, ratings, photo } = review;
   const ratingsIcon = [];
   for (var i = 1; i <= ratings; i++) {
     ratingsIcon.push(<FontAwesomeIcon icon={faStar}></FontAwesomeIcon>);
   }
-  const [currentUser] = useAuthState(auth);
-  console.log(currentUser);
+
+
   return (
     <div>
       <div class="card w-full  bg-base-100 shadow-xl">

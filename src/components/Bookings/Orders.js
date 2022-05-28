@@ -8,7 +8,12 @@ const Orders = () => {
   const { id } = useParams();
   const [part, setPart] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/service/${id}`)
+    fetch(`http://localhost:5000/service/${id}` , {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         setPart(data);

@@ -21,6 +21,7 @@ import ManageProducts from "./components/Dashboard/ManageProducts";
 import ManageOrders from "./components/Dashboard/ManageOrders";
 import RequireAdmin from "./components/Login/RequireAdmin";
 import Payment from "./components/Dashboard/Payment";
+import Blog from "./components/Blog/Blog";
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
+        <Route path="/home" element={<Home></Home>}></Route>
+        <Route path="/blog" element={<Blog></Blog>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
@@ -62,15 +65,27 @@ function App() {
           ></Route>
           <Route
             path="addproducts"
-            element={<AddProducts></AddProducts>}
+            element={
+              <RequireAdmin>
+                <AddProducts></AddProducts>
+              </RequireAdmin>
+            }
           ></Route>
           <Route
             path="manageproducts"
-            element={<ManageProducts></ManageProducts>}
+            element={
+              <RequireAdmin>
+                <ManageProducts></ManageProducts>
+              </RequireAdmin>
+            }
           ></Route>
           <Route
             path="manageorders"
-            element={<ManageOrders></ManageOrders>}
+            element={
+              <RequireAdmin>
+                <ManageOrders></ManageOrders>
+              </RequireAdmin>
+            }
           ></Route>
         </Route>
       </Routes>

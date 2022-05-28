@@ -17,6 +17,9 @@ const Payment = () => {
   const { data: order, isLoading } = useQuery(["orders", id], () =>
     fetch(url, {
       method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
     }).then((res) => res.json())
   );
 
@@ -25,21 +28,23 @@ const Payment = () => {
   }
 
   return (
-    <div>
-      <div class="card w-50 max-w-md bg-base-100 shadow-xl my-12">
+    <div className="mx-auto">
+      <div class="card w-50 max-w-md bg-base-100 shadow-xl my-12 mx-auto">
         <div class="card-body">
           <p className="text-success font-bold">Hello, {order.userName}</p>
-          <h2 class="card-title">Please Pay for {order.name}</h2>
+          <h2 class="card-title">
+            Please Pay for : <span className="text-success"> {order.name}</span>{" "}
+          </h2>
           <p>
-            Your Order:{" "}
-            <span className="text-orange-700">
-              {order.quantity} piece {order.name}
-            </span>
+            Your Order Quantity:{" "}
+            <span className="text-orange-700">{order.quantity} pieces</span>
           </p>
-          <p>Please pay: ${order.cost}</p>
+          <p>
+            Please pay: <span className="text-orange-700">${order.cost}</span>
+          </p>
         </div>
       </div>
-      <div class="card flex-shrink-0 w-50 max-w-md shadow-2xl bg-base-100">
+      <div class="card flex-shrink-0 w-50 max-w-md shadow-2xl bg-base-100 mx-auto">
         <div class="card-body">
           <Elements stripe={stripePromise}>
             <CheckoutForm order={order} />
