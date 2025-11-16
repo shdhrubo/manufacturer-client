@@ -107,7 +107,7 @@ const Header = () => {
         <label
           tabIndex="1"
           for="dashboard-sidebar"
-          className="btn btn-ghost lg:hidden"
+          className="btn btn-ghost hidden"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
