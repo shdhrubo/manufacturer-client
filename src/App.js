@@ -14,10 +14,10 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import MyOrders from "./components/Dashboard/MyOrders";
 import AddReviews from "./components/Dashboard/AddReviews";
 import MyProfiile from "./components/Dashboard/MyProfiile";
+import DashboardHome from "./components/Dashboard/DashboardHome";
 import MakeAdmin from "./components/Dashboard/MakeAdmin";
 import AddProducts from "./components/Dashboard/AddProducts";
 import ManageProducts from "./components/Dashboard/ManageProducts";
-import ManageOrders from "./components/Dashboard/ManageOrders";
 import RequireAdmin from "./components/Login/RequireAdmin";
 import Payment from "./components/Dashboard/Payment";
 import Blog from "./components/Blog/Blog";
@@ -60,6 +60,7 @@ function App() {
               </RequireAuth>
             }
           >
+            <Route index element={<DashboardHome></DashboardHome>}></Route>
             <Route
               path="myorders"
               element={
@@ -102,14 +103,7 @@ function App() {
                 </RequireAdmin>
               }
             ></Route>
-            <Route
-              path="manageorders"
-              element={
-                <RequireAdmin>
-                  <ManageOrders></ManageOrders>
-                </RequireAdmin>
-              }
-            ></Route>
+
           </Route>
         </Routes>
       </ScrollToTop>

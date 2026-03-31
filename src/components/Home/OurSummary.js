@@ -10,80 +10,29 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
 const OurSummary = () => {
+  const stats = [
+    { icon: faUser, value: "31K+", label: "Customers" },
+    { icon: faMoneyBill1Wave, value: "120M+", label: "Revenue" },
+    { icon: faTools, value: "10+", label: "Tools" },
+    { icon: faHandshake, value: "20+", label: "Partners" },
+    { icon: faBuilding, value: "12+", label: "Branches" },
+    { icon: faGlobe, value: "5+", label: "Worldwide Locations" },
+  ];
+
   return (
-    <div className="bg-blue-50 py-16 px-10 mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20">
-      <div class="card w-auto bg-base-100 shadow-xl py-4 hovering">
-        <div>
-          <FontAwesomeIcon
-            className="text-3xl text-blue-700 mb-2"
-            icon={faUser}
-          ></FontAwesomeIcon>{" "}
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+      {stats.map((stat, index) => (
+        <div key={index} className="flex flex-col items-center justify-center p-6 bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-300 transform hover:-translate-y-2 group">
+          <div className="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-300 shadow-sm group-hover:shadow-lg group-hover:shadow-blue-500/30">
+            <FontAwesomeIcon
+              className="text-3xl text-blue-600 group-hover:text-white transition-colors duration-300"
+              icon={stat.icon}
+            />
+          </div>
+          <h2 className="text-3xl font-extrabold text-gray-900 mb-1 tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-cyan-600 transition-all duration-300">{stat.value}</h2>
+          <p className="text-gray-500 text-xs sm:text-sm font-semibold uppercase tracking-wider text-center">{stat.label}</p>
         </div>
-        <div class="items-center text-center">
-          <h2 class="font-bold title-color">31K+ </h2>
-          <p className="font-bold">Customers</p>
-        </div>
-      </div>
-      <div class="card w-auto bg-base-100 shadow-xl py-4 hovering">
-        <div>
-          <FontAwesomeIcon
-            className="text-3xl text-blue-700 mb-2"
-            icon={faMoneyBill1Wave}
-          ></FontAwesomeIcon>{" "}
-        </div>
-        <div class="items-center text-center">
-          <h2 class="font-bold title-color">120M+ </h2>
-          <p className="font-bold">Revenue</p>
-        </div>
-      </div>
-      <div class="card w-auto bg-base-100 shadow-xl py-4 hovering">
-        <div>
-          <FontAwesomeIcon
-            className="text-3xl text-blue-700 mb-2"
-            icon={faTools}
-          ></FontAwesomeIcon>{" "}
-        </div>
-        <div class="items-center text-center">
-          <h2 class="font-bold title-color">10+ </h2>
-          <p className="font-bold">Tools</p>
-        </div>
-      </div>
-      <div class="card w-auto bg-base-100 shadow-xl py-4 hovering">
-        <div>
-          <FontAwesomeIcon
-            className="text-3xl text-blue-700 mb-2"
-            icon={faHandshake}
-          ></FontAwesomeIcon>{" "}
-        </div>
-        <div class="items-center text-center">
-          <h2 class="font-bold title-color">20+ </h2>
-          <p className="font-bold">Partners</p>
-        </div>
-      </div>
-      <div class="card w-auto bg-base-100 shadow-xl py-4 hovering">
-        <div>
-          <FontAwesomeIcon
-            className="text-3xl text-blue-700 mb-2"
-            icon={faBuilding}
-          ></FontAwesomeIcon>{" "}
-        </div>
-        <div class="items-center text-center">
-          <h2 class="font-bold title-color">12+ </h2>
-          <p className="font-bold">Branch</p>
-        </div>
-      </div>
-      <div class="card w-auto bg-base-100 shadow-xl py-4 hovering">
-        <div>
-          <FontAwesomeIcon
-            className="text-3xl text-blue-700 mb-2"
-            icon={faGlobe}
-          ></FontAwesomeIcon>{" "}
-        </div>
-        <div class="items-center text-center">
-          <h2 class="font-bold title-color">5+</h2>
-          <p className="font-bold">Worldwide Companies</p>
-        </div>
-      </div>
+      ))}
     </div>
   );
 };

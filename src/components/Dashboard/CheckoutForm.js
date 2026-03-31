@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import baseUrl from "../../api/baseUrl";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
 const CheckoutForm = ({ order }) => {
@@ -13,7 +14,7 @@ const CheckoutForm = ({ order }) => {
   const { _id, name, user, userName, cost } = order;
 
   useEffect(() => {
-    fetch("https://manufacturer-xvzb.onrender.com/create-payment-intent", {
+    fetch(`${baseUrl}/create-payment-intent`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -75,7 +76,7 @@ const CheckoutForm = ({ order }) => {
         appointment: _id,
         transactionId: paymentIntent.id,
       };
-      fetch(`https://manufacturer-xvzb.onrender.com/order/${_id}`, {
+      fetch(`${baseUrl}/order/${_id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",
@@ -122,7 +123,9 @@ const CheckoutForm = ({ order }) => {
           <p>{success} </p>
           <p>
             Your transaction Id:{" "}
-            <span className="text-orange-500 font-bold">{transactionId}</span>{" "}
+            <span className="text-orange-500 font-bold">
+              {transactionId}
+            </span>{" "}
           </p>
         </div>
       )}

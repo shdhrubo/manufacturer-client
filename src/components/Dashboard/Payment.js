@@ -1,18 +1,19 @@
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import React from "react";
+import baseUrl from "../../api/baseUrl";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import CheckoutForm from "./CheckoutForm";
 
 const stripePromise = loadStripe(
-  "pk_test_51L2GMbGJrhHWZjbh8mOIyMt6GnbvkCHpts265d0Mr76ARYESA533DKiaVBmB7zbjOeYvuZtg1InFLBUr75LyEV9k00fmRI26a5"
+  "pk_test_51L2GMbGJrhHWZjbh8mOIyMt6GnbvkCHpts265d0Mr76ARYESA533DKiaVBmB7zbjOeYvuZtg1InFLBUr75LyEV9k00fmRI26a5",
 );
 
 const Payment = () => {
   const { id } = useParams();
-  const url = `https://manufacturer-xvzb.onrender.com/orders/${id}`;
+  const url = `${baseUrl}/orders/${id}`;
 
   const { data: order, isLoading } = useQuery(["orders", id], () =>
     fetch(url, {
@@ -20,7 +21,7 @@ const Payment = () => {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
-    }).then((res) => res.json())
+    }).then((res) => res.json()),
   );
 
   if (isLoading) {
@@ -33,7 +34,8 @@ const Payment = () => {
         <div class="card-body">
           <p className="text-success font-bold">Hello, {order.userName}</p>
           <h2 class="card-title">
-            Please Pay for : <span className="text-success"> {order.name}</span>{" "}
+            Please Pay for :{" "}
+            <span className="text-success"> {order.name}</span>{" "}
           </h2>
           <p>
             Your Order Quantity:{" "}

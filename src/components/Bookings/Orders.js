@@ -3,12 +3,13 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
+import baseUrl from "../../api/baseUrl";
 
 const Orders = () => {
   const { id } = useParams();
   const [part, setPart] = useState([]);
   useEffect(() => {
-    fetch(`https://manufacturer-xvzb.onrender.com/service/${id}`, {
+    fetch(`${baseUrl}/service/${id}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -35,7 +36,7 @@ const Orders = () => {
       quantity: quantity,
       cost: quantity * part.price,
     };
-    fetch("https://manufacturer-xvzb.onrender.com/orders", {
+    fetch(`${baseUrl}/orders`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

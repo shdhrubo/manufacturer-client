@@ -1,4 +1,5 @@
 import React from "react";
+import baseUrl from "../../api/baseUrl";
 import { toast } from "react-toastify";
 
 const DeleteConfirmModal = ({
@@ -8,7 +9,7 @@ const DeleteConfirmModal = ({
 }) => {
   const { name, _id } = deletingProducts;
   const handleDelete = () => {
-    fetch(`https://manufacturer-xvzb.onrender.com/service/${_id}`, {
+    fetch(`${baseUrl}/service/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

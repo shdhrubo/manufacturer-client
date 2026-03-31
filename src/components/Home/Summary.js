@@ -1,20 +1,18 @@
-import {
-  faMoneyBill,
-  faMoneyBill1Wave,
-  faTools,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import OurSummary from "./OurSummary";
 
 const Summary = () => {
   return (
-    <div>
-      <h4 className="text-2xl font-bold text-blue-700  my-6">
-        Our Business Summary
-      </h4>
-    <OurSummary></OurSummary>
+    <div className="py-20 bg-white border-y border-gray-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-base text-blue-600 font-semibold tracking-wide uppercase">Impact Tracking</h2>
+          <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight sm:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-cyan-600">
+            Our Business Summary
+          </p>
+        </div>
+        <OurSummary></OurSummary>
+      </div>
     </div>
   );
 };

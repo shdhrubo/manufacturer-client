@@ -8,91 +8,67 @@ import React from "react";
 import team1 from "../../images/team1.jpg";
 import team2 from "../../images/team2.jpg";
 import team3 from "../../images/team3.jpg";
+
 const Teams = () => {
+  const teamMembers = [
+    {
+      name: "John De",
+      role: "CEO",
+      image: team3,
+      description: "CEO is responsible for managing a company's overall operations and communicating with the board."
+    },
+    {
+      name: "Harry Bekar",
+      role: "CTO",
+      image: team2,
+      description: "Our CTO is the highest technology executive position in company who leads the technology or engineering department."
+    },
+    {
+      name: "Ederson Mcmohon",
+      role: "Software Engineer",
+      image: team1,
+      description: "Our software engineer makes the user experience better and the software more efficient by different technique."
+    }
+  ];
+
   return (
-    <div>
-      <h2 className="text-2xl text-blue-700 font-bold mt-16">Our Team</h2>
-      <h1 className="text-xl text-blue-700 font-bold ">
-        Meet Our Expert Team Member
-      </h1>
-      <div className="bg-blue-50 p-10 mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10  ">
-        <div class="card w-auto bg-base-100 shadow-xl">
-          <figure class="px-10 pt-10">
-            <img src={team3} alt="" class="rounded-xl" />
-          </figure>
-          <div class="card-body items-center text-center">
-            <h2 class="card-title font-bold ">John De</h2>
-            <h1 class="font-bold ">-CEO</h1>
-            <div class="grid grid-flow-col gap-8 text-xl">
-              <a href="" className="hover:text-blue-700">
-                <FontAwesomeIcon icon={faFacebookF}></FontAwesomeIcon>
-              </a>
-
-              <a href="" className="hover:text-blue-700">
-                <FontAwesomeIcon icon={faLinkedin}></FontAwesomeIcon>
-              </a>
-
-              <a href="" className="hover:text-blue-700">
-                <FontAwesomeIcon icon={faInstagram}></FontAwesomeIcon>
-              </a>
-            </div>
-            <p className="text-sm">
-              CEO is responsible for managing a company's overall operations and
-              communicating with the board.
-            </p>
-          </div>
+    <div className="py-20 bg-gray-50 border-y border-gray-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-20">
+          <h2 className="text-base text-blue-600 font-semibold tracking-wide uppercase">Our Team</h2>
+          <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-cyan-600">
+            Meet Our Expert Team Members
+          </p>
         </div>
-        <div class="card w-auto bg-base-100 shadow-xl">
-          <figure class="px-10 pt-10">
-            <img src={team2} alt="Shoes" class="rounded-xl" />
-          </figure>
-          <div class="card-body items-center text-center">
-            <h2 class="card-title font-bold">Harry Bekar</h2>
-            <h1 class="font-bold ">-CTO</h1>
-            <div class="grid grid-flow-col gap-8 text-xl">
-              <a href="" className="hover:text-blue-700">
-                <FontAwesomeIcon icon={faFacebookF}></FontAwesomeIcon>
-              </a>
 
-              <a href="" className="hover:text-blue-700">
-                <FontAwesomeIcon icon={faLinkedin}></FontAwesomeIcon>
-              </a>
-
-              <a href="" className="hover:text-blue-700">
-                <FontAwesomeIcon icon={faInstagram}></FontAwesomeIcon>
-              </a>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-8 mt-10">
+          {teamMembers.map((member, index) => (
+            <div key={index} className="relative group bg-white rounded-3xl p-8 pt-20 shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100 flex flex-col items-center text-center mt-12 md:mt-0">
+              
+              <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 w-32 h-32 rounded-full p-1.5 bg-gradient-to-tr from-blue-600 to-cyan-400 group-hover:scale-110 transition-transform duration-500 shadow-xl">
+                <img src={member.image} alt={member.name} className="w-full h-full object-cover rounded-full border-4 border-white" />
+              </div>
+              
+              <h2 className="text-2xl font-bold text-gray-900 mt-2">{member.name}</h2>
+              <h3 className="text-blue-600 font-medium tracking-wide uppercase text-sm mb-4">{member.role}</h3>
+              
+              <p className="text-gray-500 text-sm leading-relaxed mb-8 flex-grow">
+                {member.description}
+              </p>
+              
+              <div className="flex gap-4">
+                <a href="#" className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors duration-300 shadow-sm">
+                  <FontAwesomeIcon icon={faFacebookF} />
+                </a>
+                <a href="#" className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors duration-300 shadow-sm">
+                  <FontAwesomeIcon icon={faLinkedin} />
+                </a>
+                <a href="#" className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center hover:bg-pink-600 hover:text-white transition-colors duration-300 shadow-sm">
+                  <FontAwesomeIcon icon={faInstagram} />
+                </a>
+              </div>
             </div>
-            <p className="text-sm">
-              Our CTO is the highest technology executive position in company
-              who leads the technology or engineering department.
-            </p>
-          </div>
-        </div>
-        <div class="card w-auto bg-base-100 shadow-xl">
-          <figure class="px-10 pt-10">
-            <img src={team1} alt="Shoes" class="rounded-xl" />
-          </figure>
-          <div class="card-body items-center text-center">
-            <h2 class="card-title font-bold">Ederson Mcmohon</h2>
-            <h1 class="font-bold ">-Software Engineer</h1>
-            <div class="grid grid-flow-col gap-8 text-xl">
-              <a href="" className="hover:text-blue-700">
-                <FontAwesomeIcon icon={faFacebookF}></FontAwesomeIcon>
-              </a>
-
-              <a href="" className="hover:text-blue-700">
-                <FontAwesomeIcon icon={faLinkedin}></FontAwesomeIcon>
-              </a>
-
-              <a href="" className="hover:text-blue-700">
-                <FontAwesomeIcon icon={faInstagram}></FontAwesomeIcon>
-              </a>
-            </div>
-            <p className="text-sm">
-              Our software engineer makes the user experience better and the
-              software more efficient by different technique.
-            </p>
-          </div>
+          ))}
         </div>
       </div>
     </div>

@@ -1,10 +1,11 @@
 import React from "react";
+import baseUrl from "../../api/baseUrl";
 import { toast } from "react-toastify";
 
 const DeletingOrdersModal = ({ deletingOrder, refetch, setDeletingOrder }) => {
   const { name, _id } = deletingOrder;
   const handleDelete = () => {
-    fetch(`https://manufacturer-xvzb.onrender.com/order/${_id}`, {
+    fetch(`${baseUrl}/order/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
