@@ -1,6 +1,6 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React from "react";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import Loading from "../Loading/Loading";
@@ -8,7 +8,6 @@ import Review from "./Review";
 import baseUrl from "../../api/baseUrl";
 
 const Reviews = () => {
-  const [loading, setLoading] = useState(true);
 
   const { data: reviews, isLoading } = useQuery(["reviews"], () =>
     fetch(`${baseUrl}/reviews`, {
@@ -18,9 +17,6 @@ const Reviews = () => {
       },
     })
       .then((res) => res.json())
-      .finally(() => {
-        setLoading(false);
-      }),
   );
   if (isLoading) {
     return <Loading></Loading>;
@@ -42,29 +38,23 @@ const Reviews = () => {
           </p>
         </div>
 
-        {loading ? (
-          <div className="flex justify-center">
-            <Loading />
+        <div className="flex flex-col items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+            {slicedReviews?.map((review) => (
+              <Review review={review} key={review._id}></Review>
+            ))}
           </div>
-        ) : (
-          <div className="flex flex-col items-center">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
-              {slicedReviews?.map((review) => (
-                <Review review={review} key={review._id}></Review>
-              ))}
-            </div>
 
-            <Link to={"/reviews"} className="mt-12">
-              <button className="px-8 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-semibold transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg flex items-center shadow-md">
-                See All Reviews
-                <FontAwesomeIcon
-                  className="ml-3 group-hover:translate-x-1 transition-transform"
-                  icon={faArrowRight}
-                />
-              </button>
-            </Link>
-          </div>
-        )}
+          <Link to={"/reviews"} className="mt-12">
+            <button className="px-8 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-semibold transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg flex items-center shadow-md">
+              See All Reviews
+              <FontAwesomeIcon
+                className="ml-3 group-hover:translate-x-1 transition-transform"
+                icon={faArrowRight}
+              />
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

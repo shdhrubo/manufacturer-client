@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useQuery } from "react-query";
 import Loading from "../Loading/Loading";
 import Review from "../Home/Review";
 import baseUrl from "../../api/baseUrl";
 
 const AllReviews = () => {
-  const [loading, setLoading] = useState(true);
 
   const { data: reviews, isLoading } = useQuery(["reviews"], () =>
     fetch(`${baseUrl}/reviews`, {
@@ -15,9 +14,6 @@ const AllReviews = () => {
       },
     })
       .then((res) => res.json())
-      .finally(() => {
-        setLoading(false);
-      }),
   );
 
   if (isLoading) {
@@ -44,17 +40,11 @@ const AllReviews = () => {
           </p>
         </div>
 
-        {loading ? (
-          <div className="flex justify-center">
-            <Loading />
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {reviews?.map((review) => (
-              <Review review={review} key={review._id}></Review>
-            ))}
-          </div>
-        )}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {reviews?.map((review) => (
+            <Review review={review} key={review._id}></Review>
+          ))}
+        </div>
       </div>
     </div>
   );
