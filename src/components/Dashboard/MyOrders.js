@@ -72,7 +72,7 @@ const MyOrders = () => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
-                {myOrders.map((a, index) => (
+                {myOrders?.map((a, index) => (
                   <MyOrderRow
                     a={a}
                     index={index}
