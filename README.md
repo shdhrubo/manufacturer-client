@@ -1,8 +1,10 @@
 # SOLVER
 
-Solver is a computer manufacturing company ruling the world!
+Solver is a computer manufacturing company ruling the world! 
 
-Live site link [Solver](https://manufacturer-website-1234.web.app)
+Backend Repository Link: https://github.com/shdhrubo/manufacturer-server
+
+Live site link https://manufacturer-website-1234.web.app
 
 # Website's features and functionality
 
